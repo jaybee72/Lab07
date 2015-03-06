@@ -87,15 +87,19 @@ void QueueLinked<T>::enqueue(T* item)
 
     //DO THIS (enqueueing the first item is a special case)
 
-
-
-
-
-
-
-
-
-    sze++;
+   if (sze == 0)
+   {
+      node->setNext(node);
+      back = node;
+      
+   }
+   else 
+   {
+      node->setNext(back->getNext());
+      back->setNext(node);
+      back = node;
+   }
+   sze++;
 }
 
 template < class T >
@@ -105,19 +109,23 @@ T* QueueLinked<T>::dequeue()
 
     //DO THIS (dequeueing the last item is a special case)
     //also, check that there are items before dequeueing
+    if (!isEmpty())
+    {
+       if (sze == 1)
+       { 
+           item = back->getItem();
+           delete back;
+       }
+       else
+       {
+          NextNode<T>* front = back->getNext();
+          back->setNext(front->getNext());
+          item = front->getItem();
+          delete front;
+       }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    sze--;
     return item;
 }
 

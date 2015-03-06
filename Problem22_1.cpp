@@ -1,3 +1,4 @@
+//https://github.com/jaybee72/Lab07
 #include "Problem22_1.h"
 #include "RombergIntegration.h"
 #include "RecursiveIntegration.h"
@@ -47,7 +48,7 @@ int main()
    p->setUpperLimit(2.0);
 
    double result;
-
+	cout << "Test\n";
    result = p->integrate(0);
    cout << "The area under the curve using accurate Romberg level 0: " << result << endl;
 
